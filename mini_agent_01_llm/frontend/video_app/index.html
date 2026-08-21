@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>영상 프레임 분석 · 음성 안내</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p class="eyebrow">MINI AGENT · MULTIMODAL</p>
+      <h1>영상 속 한 장면을<br><span>보고, 설명하고, 말합니다.</span></h1>
+      <p class="lead">동영상이나 카메라의 현재 화면 한 장만 AI로 전송합니다. 원본 영상은 서버에 저장하거나 업로드하지 않습니다.</p>
+    </header>
+
+    <section class="notice" aria-label="개인정보 안내">
+      카메라를 사용할 때는 브라우저 권한이 필요합니다. 캡처 이미지는 외부 AI 서비스로 전송되며, 안내 음성은 AI 합성 음성입니다.
+    </section>
+
+    <section class="panel controls">
+      <div class="source-buttons">
+        <label class="button primary" for="video-file">동영상 선택</label>
+        <input id="video-file" type="file" accept="video/*" hidden>
+        <button id="camera-start" class="button" type="button">카메라 시작</button>
+        <button id="camera-stop" class="button danger" type="button" disabled>카메라 중지</button>
+      </div>
+      <label for="question">AI에게 요청할 내용</label>
+      <input id="question" value="이 화면에서 보이는 대상과 주의할 점을 한국어로 간결하게 설명해 주세요.">
+    </section>
+
+    <section class="workspace">
+      <article class="panel media-panel">
+        <div class="panel-title"><span>01</span> 영상</div>
+        <div class="video-wrap">
+          <video id="video" controls playsinline></video>
+          <div id="empty-state" class="empty-state">동영상을 선택하거나 카메라를 시작하세요.</div>
+        </div>
+        <button id="analyze" class="button primary wide" type="button" disabled>현재 장면 촬영 · 분석</button>
+      </article>
+
+      <article class="panel result-panel">
+        <div class="panel-title"><span>02</span> 분석 결과</div>
+        <img id="capture-preview" alt="분석할 캡처 화면" hidden>
+        <p id="status" class="status" role="status">분석할 장면을 준비해 주세요.</p>
+        <div id="result" class="result" hidden>
+          <h2>AI 안내</h2>
+          <p id="summary"></p>
+          <details>
+            <summary>전체 분석 결과</summary>
+            <pre id="full-result"></pre>
+          </details>
+          <p class="synthetic">AI가 생성한 합성 음성입니다.</p>
+          <audio id="speech" controls></audio>
+        </div>
+      </article>
+    </section>
+    <canvas id="canvas" hidden></canvas>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>
