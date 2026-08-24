@@ -7,7 +7,7 @@ Agent는 차량 번호를 추출할 뿐 출입 허용과 문 열기를 결정하
 from app.agents.parking_entry_agent import extract_parking_request
 from app.repositories.lab_repository import lab_repository
 from app.schemas.lab import LabRunRequest
-from app.tools.lab_tools import lookup_vehicle, parking_entry
+from app.tools.parking_tools import lookup_vehicle, parking_entry
 
 def run(payload: LabRunRequest) -> dict:
     """추출 → 조회 → 정책 → 확인 → 실행의 고정된 Workflow를 한 단계 진행합니다."""
