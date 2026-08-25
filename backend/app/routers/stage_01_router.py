@@ -85,5 +85,3 @@ def text_to_speech(payload: TtsRequest) -> Response:
         raise HTTPException(status_code=422, detail=str(error)) from error
     except Exception as error:
         raise HTTPException(status_code=502, detail=f"TTS 생성 실패: {error}") from error
-
-        
