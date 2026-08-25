@@ -12,6 +12,8 @@ providers = st.Page("app_pages/06_provider_compare.py", title="Provider 비교")
 prompt = st.Page("app_pages/07_prompt_builder.py", title="Prompt 구성")
 validation = st.Page("app_pages/08_pydantic_validation.py", title="Pydantic 검증")
 structured = st.Page("app_pages/09_structured_output.py", title="Structured Output")
+parking_workflow = st.Page("app_pages/19_parking_workflow.py", title="주차 Workflow")
+parking_agent = st.Page("app_pages/20_parking_agent.py", title="주차 AI Agent")
 image_analysis = st.Page("app_pages/10_image_analysis.py", title="이미지 분석")
 tts = st.Page("app_pages/11_tts.py", title="음성 생성")
 tool_schema = st.Page("app_pages/12_tool_schema.py", title="Tool Schema")
@@ -22,7 +24,7 @@ tool_errors = st.Page("app_pages/16_tool_errors.py", title="Tool 오류 처리")
 agent_cycle = st.Page("app_pages/17_agent_cycle.py", title="Agent Cycle")
 tool_use_labs = st.Page("app_pages/18_tool_use_labs.py", title="Tool Use Labs")
 
-navigation = st.navigation([home, concept, travel, environment, llm, providers, image_analysis, tts, prompt, validation, structured, tool_schema, tool_select, tool_validation, tool_run, tool_errors, agent_cycle, tool_use_labs], position="hidden")
+navigation = st.navigation([home, concept, travel, environment, llm, providers, image_analysis, tts, prompt, validation, structured, parking_workflow, parking_agent, tool_schema, tool_select, tool_validation, tool_run, tool_errors, agent_cycle, tool_use_labs], position="hidden")
 
 with st.sidebar:
     st.title("🧰 Mini Agent 03")
@@ -43,6 +45,8 @@ with st.sidebar:
         st.page_link(prompt, label="2-1. Prompt 구성")
         st.page_link(validation, label="2-2. Pydantic 검증")
         st.page_link(structured, label="2-3. Structured Output")
+        st.page_link(parking_workflow, label="2-4. Workflow")
+        st.page_link(parking_agent, label="2-5. AI Agent")
 
     st.divider()
     with st.expander("03. Tool Use", expanded=True):
