@@ -8,3 +8,4 @@ python-multipart
 pytest
 streamlit
 uvicorn
+psycopg[binary]
