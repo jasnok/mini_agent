@@ -1,6 +1,8 @@
 from fastapi.testclient import TestClient
 
 from app.main import app
+from app.recognizers.mock import mock_vehicle_recognizer
+from app.services import vehicle_recognition_service
 
 
 client = TestClient(app)
@@ -9,7 +11,12 @@ client = TestClient(app)
 PNG = b"\x89PNG\r\n\x1a\n" + b"mock-image"
 
 
-def test_vehicle_recognition_uses_mock_filename() -> None:
+def test_vehicle_recognition_uses_mock_filename(monkeypatch) -> None:
+    monkeypatch.setattr(
+        vehicle_recognition_service,
+        "get_vehicle_recognizer",
+        lambda: mock_vehicle_recognizer,
+    )
     response = client.post(
         "/api/vehicle/recognize",
         files={"image": ("12가3456.png", PNG, "image/png")},
@@ -22,7 +29,12 @@ def test_vehicle_recognition_uses_mock_filename() -> None:
     }
 
 
-def test_vehicle_recognition_can_return_not_recognized() -> None:
+def test_vehicle_recognition_can_return_not_recognized(monkeypatch) -> None:
+    monkeypatch.setattr(
+        vehicle_recognition_service,
+        "get_vehicle_recognizer",
+        lambda: mock_vehicle_recognizer,
+    )
     response = client.post(
         "/api/vehicle/recognize",
         files={"image": ("unknown.png", PNG, "image/png")},

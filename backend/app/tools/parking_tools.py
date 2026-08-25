@@ -1,7 +1,8 @@
 from typing import Any
 
+from app.repositories.lab_repository import lab_repository
 from app.repositories.vehicle_repository import vehicle_repository
-from backend.app.repositories import lab_repository
+
 
 def lookup_vehicle(plate_number: str) -> dict:
     """차량 등록 사실만 조회하는 읽기 전용 Tool입니다."""
@@ -10,9 +11,10 @@ def lookup_vehicle(plate_number: str) -> dict:
     return {
         "plate_number": plate_number,
         "registered": vehicle is not None,
-        "status": vehicle.status if vehicle else None,
-        "valid_until": vehicle.valid_until if vehicle else None,
-        "version": vehicle.version if vehicle else None,
+        "active": bool(vehicle and vehicle["status"] == "active"),
+        "status": vehicle["status"] if vehicle else None,
+        "valid_until": vehicle["valid_until"] if vehicle else None,
+        "version": vehicle["version"] if vehicle else None,
     }
 
 def parking_entry(plate_number: str) -> dict[str, Any]:

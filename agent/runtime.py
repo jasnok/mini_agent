@@ -36,7 +36,7 @@ async def run_agent_cycle(
 ) -> ParkingAgentResult:
     context = AgentContext(vehicle_number=vehicle_number)
     trace: list[TraceItem] = [
-        TraceItem(step=0, stage="input_validation", status="completed")
+        TraceItem(step=1, stage="input_validation", status="completed")
     ]
     seen_calls: set[tuple[str, str]] = set()
 
@@ -53,7 +53,7 @@ async def run_agent_cycle(
             "공통 Tool 설정을 불러오지 못했습니다.",
         )
 
-    for step in range(1, MAX_TOOL_CALLS + 1):
+    for step in range(2, MAX_TOOL_CALLS + 2):
         selection_started = perf_counter()
         try:
             call = await provider.choose_tool(

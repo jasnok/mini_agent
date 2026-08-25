@@ -34,7 +34,7 @@ async def run_parking_agent(
             status="needs_clarification",
             trace=[
                 TraceItem(
-                    step=0,
+                    step=1,
                     stage="input_validation",
                     status="needs_clarification",
                 )

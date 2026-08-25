@@ -4,10 +4,15 @@ from app.core.config import settings
 from app.errors import ImageTooLargeError, RecognitionDependencyError, UnsupportedImageError
 from app.recognizers.base import VehicleRecognizer
 from app.recognizers.mock import mock_vehicle_recognizer
+from app.recognizers.openai_vision import openai_vehicle_recognizer
 from app.schemas.parking import VehicleRecognizeResponse
 
 
 ALLOWED_IMAGE_TYPES = {"image/jpeg", "image/png", "image/webp"}
+RECOGNIZERS: dict[str, VehicleRecognizer] = {
+    "mock": mock_vehicle_recognizer,
+    "openai": openai_vehicle_recognizer,
+}
 
 
 def _matches_signature(content_type: str, content: bytes) -> bool:
@@ -29,16 +34,26 @@ def validate_vehicle_image(content_type: str | None, content: bytes) -> str:
     return content_type
 
 
+def get_vehicle_recognizer() -> VehicleRecognizer:
+    recognizer = RECOGNIZERS.get(settings.vehicle_recognizer)
+    if recognizer is None:
+        raise RecognitionDependencyError(
+            f"지원하지 않는 VEHICLE_RECOGNIZER 설정입니다: {settings.vehicle_recognizer}"
+        )
+    return recognizer
+
+
 def recognize_vehicle(
     *,
     filename: str,
     content_type: str | None,
     content: bytes,
-    recognizer: VehicleRecognizer = mock_vehicle_recognizer,
+    recognizer: VehicleRecognizer | None = None,
 ) -> VehicleRecognizeResponse:
     validated_content_type = validate_vehicle_image(content_type, content)
     try:
-        vehicle_number = recognizer.recognize(
+        selected_recognizer = recognizer or get_vehicle_recognizer()
+        vehicle_number = selected_recognizer.recognize(
             filename=filename,
             content_type=validated_content_type,
             content=content,
