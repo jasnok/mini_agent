@@ -102,8 +102,11 @@ Adapter는 포함하지 않으며, 멀티 Provider Adapter는 Mini Agent 04에�
 
 ## 실행
 
+팀 프로젝트 전체를 PostgreSQL부터 Backend, Frontend까지 실행하고 Workflow·AI Agent를
+검증하는 방법은 [팀 로컬 실행 가이드](./RUN_GUIDE.md)를 참고합니다.
+
 ```powershell
-cd C:\mini_agent_st\mini_agent_03_tool
+cd C:\mini\team2_miniproject2
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
@@ -116,9 +119,9 @@ uvicorn app.main:app --reload --port 8000
 새 터미널에서 실행합니다.
 
 ```powershell
-cd C:\mini_agent_st\mini_agent_03_tool
+cd C:\mini\team2_miniproject2
 .\.venv\Scripts\Activate.ps1
-streamlit run .\frontend\app.py
+python -m streamlit run .\frontend\app.py
 ```
 
 Stage 03 Tool Calling에는 `OPENAI_API_KEY`가 필요합니다. Stage 01·02의 일반 생성과 구조화 출력은 기존 Provider 선택 기능을 유지합니다.

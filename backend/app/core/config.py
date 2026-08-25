@@ -22,6 +22,7 @@ class Settings:
     openai_vision_model: str = os.getenv("OPENAI_VISION_MODEL", "gpt-4.1-mini")
     openai_tts_model: str = os.getenv("OPENAI_TTS_MODEL", "gpt-4o-mini-tts")
     openai_tts_voice: str = os.getenv("OPENAI_TTS_VOICE", "coral")
+    vehicle_recognizer: str = os.getenv("VEHICLE_RECOGNIZER", "mock").strip().lower()
     gemini_api_key: str = os.getenv("GEMINI_API_KEY", "")
     gemini_model: str = os.getenv("GEMINI_MODEL", "")
     ollama_base_url: str = os.getenv("OLLAMA_BASE_URL", "http://127.0.0.1:11434").rstrip("/")
@@ -30,7 +31,8 @@ class Settings:
     weather_mode: str = os.getenv("WEATHER_MODE", "mock")
     open_meteo_base_url: str = os.getenv("OPEN_METEO_BASE_URL", "https://api.open-meteo.com").rstrip("/")
     open_meteo_geocoding_url: str = os.getenv("OPEN_METEO_GEOCODING_URL", "https://geocoding-api.open-meteo.com").rstrip("/")
-    max_image_size_mb: int = int(os.getenv("MAX_IMAGE_SIZE_MB", "10"))
+    max_image_size_mb: int = int(os.getenv("MAX_IMAGE_SIZE_MB", "5"))
+    database_url: str = os.getenv("DATABASE_URL", "")
 
 
 settings = Settings()
