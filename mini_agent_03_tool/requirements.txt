@@ -8,5 +8,3 @@ python-multipart
 pytest
 streamlit
 uvicorn
-psycopg[binary]
-mcp>=1.27,<2
