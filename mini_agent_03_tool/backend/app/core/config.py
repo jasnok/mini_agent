@@ -15,6 +15,7 @@ load_dotenv(PROJECT_ROOT / ".env")
 
 
 
+
 @dataclass(frozen=True)
 class Settings:
     llm_provider: str = os.getenv("LLM_PROVIDER", "mock")
