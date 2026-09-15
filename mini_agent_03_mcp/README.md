@@ -1,5 +1,9 @@
 # Mini Agent 03 · MCP
 
+> Docker Compose / Docker Hub 실행은 [DOCKER_GUIDE.md](DOCKER_GUIDE.md)를 참고하세요.
+> Docker 구성은 Frontend·Backend·Travel·Policy 4개 컨테이너이며 두 MCP 서버 모두 HTTP를 사용합니다.
+> 아래 내용은 기존 로컬 Python 실행과 stdio 학습 안내입니다.
+
 `mini_agent_03_tool`의 여행 Tool을 MCP Server로 분리한 작은 실전 프로젝트입니다.
 FastAPI Backend는 Tool 함수를 직접 import하지 않고 MCP Client를 통해 Tool을 발견하고
 호출합니다.

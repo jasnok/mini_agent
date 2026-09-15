@@ -1,0 +1,2 @@
+# Both MCP images use the same dependencies, but copy their own server only.
+mcp>=1.27,<2

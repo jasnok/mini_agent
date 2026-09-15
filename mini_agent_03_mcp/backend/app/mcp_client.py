@@ -13,12 +13,17 @@ from mcp.client.streamable_http import streamable_http_client
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 load_dotenv(PROJECT_ROOT / ".env")
 
+POLICY_MCP_URL = os.getenv("POLICY_MCP_URL", "").strip()
+
 MCP_SERVERS: dict[str, dict[str, Any]] = {
     "travel": {
         "transport": "streamable-http",
         "url": os.getenv("TRAVEL_MCP_URL", "http://127.0.0.1:8010/mcp"),
     },
     "policy": {
+        "transport": "streamable-http",
+        "url": POLICY_MCP_URL,
+    } if POLICY_MCP_URL else {
         "transport": "stdio",
         "command": sys.executable,
         "args": [str(PROJECT_ROOT / "mcp_server" / "policy_stdio_server.py")],

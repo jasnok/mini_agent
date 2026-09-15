@@ -1,0 +1,62 @@
+name: mini-agent-mcp-app
+
+services:
+  travel:
+    image: jso4603/mini-agent-mcp-travel:1.0.0
+    env_file:
+      - ./mcp_server/travel/.env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "healthcheck.py"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 20s
+
+  policy:
+    image: jso4603/mini-agent-mcp-policy:1.0.0
+    env_file:
+      - ./mcp_server/policy/.env
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "healthcheck.py"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 20s
+
+  backend:
+    image: jso4603/mini-agent-mcp-backend:1.0.0
+    env_file:
+      - ./backend/.env
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      travel:
+        condition: service_healthy
+      policy:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/mcp/status', timeout=8)"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 20s
+
+  frontend:
+    image: jso4603/mini-agent-mcp-frontend:1.0.0
+    env_file:
+      - ./frontend/.env
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8501:8501"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8501/_stcore/health', timeout=8)"]
+      interval: 30s
+      timeout: 15s
+      retries: 5
+      start_period: 20s

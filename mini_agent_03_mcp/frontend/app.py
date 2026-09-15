@@ -22,7 +22,7 @@ def post(path: str, payload: dict) -> dict:
 st.set_page_config(page_title="Mini Agent 03 MCP", page_icon="🔌", layout="wide")
 st.title("Mini Agent 03 · MCP")
 st.caption(
-    "FastAPI가 Streamable HTTP와 stdio MCP Server의 Tool을 발견하고 "
+    "FastAPI가 연결된 MCP Server의 Tool을 발견하고 "
     "순차 Agent Loop로 호출합니다."
 )
 
@@ -36,8 +36,8 @@ try:
         )
 except httpx.HTTPError:
     st.warning(
-        "MCP Server에 연결할 수 없습니다. Travel 서버가 8010 포트에서 "
-        "실행 중인지 확인하세요."
+        "Backend 또는 MCP Server에 연결할 수 없습니다. "
+        "Backend, Travel, Policy 서버의 실행 상태와 연결 설정을 확인하세요."
     )
 
 if st.button("MCP Tool 발견"):

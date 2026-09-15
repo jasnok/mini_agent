@@ -1,0 +1,29 @@
+# Local credentials and environment settings
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Local Python environments and generated files
+.venv
+**/.venv
+venv
+**/venv
+__pycache__
+**/__pycache__
+*.py[cod]
+**/*.py[cod]
+.pytest_cache
+**/.pytest_cache
+.mypy_cache
+**/.mypy_cache
+.ruff_cache
+**/.ruff_cache
+*.log
+**/*.log
+
+# Version control and editor settings
+.git
+**/.git
+.vscode
+.idea

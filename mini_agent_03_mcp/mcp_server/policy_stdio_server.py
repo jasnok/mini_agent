@@ -1,16 +1,29 @@
-"""호텔 정책을 제공하는 stdio MCP Server입니다.
+"""호텔 정책을 제공하는 stdio / Streamable HTTP MCP Server입니다.
 
+MCP_TRANSPORT=streamable-http로 설정하면 HTTP 서버로 실행합니다.
 stdio의 stdout은 MCP 메시지 전용이므로 일반 로그는 출력하지 않습니다.
 """
 
+import os
 from typing import Literal
 
 from mcp.server.fastmcp import FastMCP
+
+MCP_TRANSPORT = os.getenv("MCP_TRANSPORT", "stdio")
+if MCP_TRANSPORT not in ("stdio", "streamable-http"):
+    raise ValueError("MCP_TRANSPORT는 stdio 또는 streamable-http여야 합니다.")
+
+MCP_HOST = os.getenv("MCP_HOST", "127.0.0.1")
+MCP_PORT = int(os.getenv("MCP_PORT", "8011"))
 
 
 mcp = FastMCP(
     "mini-agent-policy",
     instructions="호텔 ID로 체크인 및 취소 정책을 제공합니다.",
+    host=MCP_HOST,
+    port=MCP_PORT,
+    stateless_http=True,
+    json_response=True,
 )
 
 
@@ -41,4 +54,4 @@ def get_hotel_policy(
 
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    mcp.run(transport=MCP_TRANSPORT)

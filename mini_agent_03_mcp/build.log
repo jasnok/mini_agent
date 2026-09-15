@@ -1,0 +1,635 @@
+ Image jso4603/mini-agent-mcp-travel:1.0.0 Building 
+ Image jso4603/mini-agent-mcp-policy:1.0.0 Building 
+ Image jso4603/mini-agent-mcp-backend:1.0.0 Building 
+ Image jso4603/mini-agent-mcp-frontend:1.0.0 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.01kB 0.1s done
+#1 DONE 0.1s
+
+#2 [policy internal] load build definition from Dockerfile.policy
+#2 transferring dockerfile: 522B 0.0s done
+#2 DONE 0.0s
+
+#3 [travel internal] load build definition from Dockerfile.travel
+#3 transferring dockerfile: 468B 0.0s done
+#3 DONE 0.0s
+
+#4 [frontend internal] load build definition from Dockerfile
+#4 transferring dockerfile: 396B done
+#4 DONE 0.1s
+
+#5 [backend internal] load build definition from Dockerfile
+#5 transferring dockerfile: 511B done
+#5 DONE 0.1s
+
+#6 [backend internal] load metadata for docker.io/library/python:3.12-slim
+#6 DONE 0.9s
+
+#7 [frontend internal] load .dockerignore
+#7 transferring context: 410B done
+#7 DONE 0.0s
+
+#8 [policy 1/5] FROM docker.io/library/python:3.12-slim@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea
+#8 resolve docker.io/library/python:3.12-slim@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea
+#8 resolve docker.io/library/python:3.12-slim@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea 0.1s done
+#8 DONE 0.1s
+
+#9 [backend 2/5] WORKDIR /app
+#9 CACHED
+
+#10 [backend internal] load build context
+#10 transferring context: 14.76kB 0.0s done
+#10 DONE 0.1s
+
+#11 [frontend internal] load build context
+#11 transferring context: 3.03kB 0.0s done
+#11 DONE 0.1s
+
+#12 [travel internal] load build context
+#12 transferring context: 3.15kB 0.0s done
+#12 DONE 0.1s
+
+#13 [policy internal] load build context
+#13 transferring context: 2.70kB 0.0s done
+#13 DONE 0.2s
+
+#14 [policy 3/6] COPY mcp_server/requirements.txt ./requirements.txt
+#14 DONE 0.1s
+
+#15 [backend 3/6] COPY backend/requirements.txt ./requirements.txt
+#15 DONE 0.1s
+
+#16 [frontend 3/5] COPY frontend/requirements.txt ./requirements.txt
+#16 DONE 0.1s
+
+#17 [policy 3/6] COPY mcp_server/requirements.txt ./requirements.txt
+#17 CACHED
+
+#18 [policy 4/6] RUN pip install --no-cache-dir -r requirements.txt
+#18 3.301 Collecting mcp<2,>=1.27 (from -r requirements.txt (line 2))
+#18 3.354   Downloading mcp-1.30.0-py3-none-any.whl.metadata (9.3 kB)
+#18 3.406 Collecting anyio>=4.5 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 3.416   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+#18 3.437 Collecting httpx-sse>=0.4 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 3.450   Downloading httpx_sse-0.4.3-py3-none-any.whl.metadata (9.7 kB)
+#18 3.489 Collecting httpx<1.0.0,>=0.27.1 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 3.499   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+#18 3.542 Collecting jsonschema>=4.20.0 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 3.561   Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+#18 3.599 Collecting pydantic-settings>=2.5.2 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 3.614   Downloading pydantic_settings-2.15.0-py3-none-any.whl.metadata (3.9 kB)
+#18 3.827 Collecting pydantic<3.0.0,>=2.11.0 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 3.836   Downloading pydantic-2.13.5-py3-none-any.whl.metadata (110 kB)
+#18 3.892 Collecting pyjwt>=2.10.1 (from pyjwt[crypto]>=2.10.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 3.905   Downloading pyjwt-2.13.0-py3-none-any.whl.metadata (3.4 kB)
+#18 3.923 Collecting python-multipart>=0.0.9 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 3.933   Downloading python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+#18 3.993 Collecting sse-starlette>=1.6.1 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 4.003   Downloading sse_starlette-3.4.11-py3-none-any.whl.metadata (15 kB)
+#18 4.055 Collecting starlette>=0.27 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 4.065   Downloading starlette-1.6.0-py3-none-any.whl.metadata (6.4 kB)
+#18 4.089 Collecting typing-extensions>=4.9.0 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 4.098   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#18 4.113 Collecting typing-inspection>=0.4.1 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 4.122   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+#18 4.172 Collecting uvicorn>=0.31.1 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 4.182   Downloading uvicorn-0.52.4-py3-none-any.whl.metadata (6.6 kB)
+#18 4.207 Collecting idna>=2.8 (from anyio>=4.5->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 4.219   Downloading idna-3.19-py3-none-any.whl.metadata (9.2 kB)
+#18 4.256 Collecting certifi (from httpx<1.0.0,>=0.27.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 4.266   Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+#18 4.301 Collecting httpcore==1.* (from httpx<1.0.0,>=0.27.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 4.310   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+#18 4.327 Collecting h11>=0.16 (from httpcore==1.*->httpx<1.0.0,>=0.27.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 4.338   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#18 4.361 Collecting attrs>=22.2.0 (from jsonschema>=4.20.0->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 4.371   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+#18 4.393 Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.20.0->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 4.403   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+#18 4.438 Collecting referencing>=0.28.4 (from jsonschema>=4.20.0->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 4.446   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+#18 4.861 Collecting rpds-py>=0.25.0 (from jsonschema>=4.20.0->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 4.877   Downloading rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+#18 4.907 Collecting annotated-types>=0.6.0 (from pydantic<3.0.0,>=2.11.0->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 4.915   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+#18 6.205 Collecting pydantic-core==2.46.5 (from pydantic<3.0.0,>=2.11.0->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 6.214   Downloading pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+#18 6.273 Collecting python-dotenv>=0.21.0 (from pydantic-settings>=2.5.2->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 6.283   Downloading python_dotenv-1.2.3-py3-none-any.whl.metadata (29 kB)
+#18 ...
+
+#19 [frontend 4/5] RUN pip install --no-cache-dir -r requirements.txt
+#19 3.302 Collecting httpx (from -r requirements.txt (line 1))
+#19 3.354   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+#19 3.455 Collecting streamlit (from -r requirements.txt (line 2))
+#19 3.466   Downloading streamlit-1.63.0-py3-none-any.whl.metadata (10 kB)
+#19 3.517 Collecting anyio (from httpx->-r requirements.txt (line 1))
+#19 3.525   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+#19 3.568 Collecting certifi (from httpx->-r requirements.txt (line 1))
+#19 3.581   Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+#19 3.620 Collecting httpcore==1.* (from httpx->-r requirements.txt (line 1))
+#19 3.633   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+#19 3.681 Collecting idna (from httpx->-r requirements.txt (line 1))
+#19 3.692   Downloading idna-3.19-py3-none-any.whl.metadata (9.2 kB)
+#19 3.716 Collecting h11>=0.16 (from httpcore==1.*->httpx->-r requirements.txt (line 1))
+#19 3.727   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#19 3.767 Collecting altair!=5.4.0,!=5.4.1,<7,>=5.0.0 (from streamlit->-r requirements.txt (line 2))
+#19 3.777   Downloading altair-6.2.2-py3-none-any.whl.metadata (11 kB)
+#19 3.819 Collecting click<9,>=7.0 (from streamlit->-r requirements.txt (line 2))
+#19 3.827   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#19 4.209 Collecting numpy<3,>=1.23 (from streamlit->-r requirements.txt (line 2))
+#19 4.220   Downloading numpy-2.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+#19 4.247 Collecting packaging>=20 (from streamlit->-r requirements.txt (line 2))
+#19 4.256   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+#19 4.442 Collecting pandas<4,>=1.4.0 (from streamlit->-r requirements.txt (line 2))
+#19 4.452   Downloading pandas-3.0.5-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+#19 4.798 Collecting pillow<13,>=7.1.0 (from streamlit->-r requirements.txt (line 2))
+#19 4.814   Downloading pillow-12.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.1 kB)
+#19 4.842 Collecting pydeck<1,>=0.8.0b4 (from streamlit->-r requirements.txt (line 2))
+#19 4.856   Downloading pydeck-0.9.3-py2.py3-none-any.whl.metadata (4.2 kB)
+#19 5.169 Collecting protobuf<8,>=5.26.1 (from streamlit->-r requirements.txt (line 2))
+#19 5.183   Downloading protobuf-7.36.1-cp310-abi3-manylinux2014_x86_64.whl.metadata (595 bytes)
+#19 5.336 Collecting pyarrow!=25.0.0,<26,>=7.0 (from streamlit->-r requirements.txt (line 2))
+#19 5.344   Downloading pyarrow-25.0.1-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (3.0 kB)
+#19 5.425 Collecting requests<3,>=2.27 (from streamlit->-r requirements.txt (line 2))
+#19 5.435   Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+#19 5.452 Collecting toml<2,>=0.10.1 (from streamlit->-r requirements.txt (line 2))
+#19 5.462   Downloading toml-0.10.2-py2.py3-none-any.whl.metadata (7.1 kB)
+#19 5.496 Collecting typing-extensions<5,>=4.10.0 (from streamlit->-r requirements.txt (line 2))
+#19 5.504   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#19 5.555 Collecting starlette<2,>=0.46.0 (from streamlit->-r requirements.txt (line 2))
+#19 5.576   Downloading starlette-1.6.0-py3-none-any.whl.metadata (6.4 kB)
+#19 5.623 Collecting uvicorn<1,>=0.30.0 (from streamlit->-r requirements.txt (line 2))
+#19 5.631   Downloading uvicorn-0.52.4-py3-none-any.whl.metadata (6.6 kB)
+#19 5.673 Collecting httptools<1,>=0.6.3 (from streamlit->-r requirements.txt (line 2))
+#19 5.682   Downloading httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+#19 5.716 Collecting python-multipart<1,>=0.0.10 (from streamlit->-r requirements.txt (line 2))
+#19 5.726   Downloading python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+#19 6.071 Collecting websockets<17,>=12.0.0 (from streamlit->-r requirements.txt (line 2))
+#19 6.082   Downloading websockets-16.1.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.8 kB)
+#19 6.104 Collecting itsdangerous<3,>=2.1.2 (from streamlit->-r requirements.txt (line 2))
+#19 6.114   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+#19 6.173 Collecting watchdog<7,>=2.1.5 (from streamlit->-r requirements.txt (line 2))
+#19 6.184   Downloading watchdog-6.0.0-py3-none-manylinux2014_x86_64.whl.metadata (44 kB)
+#19 6.213 Collecting jinja2 (from altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit->-r requirements.txt (line 2))
+#19 6.222   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+#19 6.264 Collecting jsonschema>=3.0 (from altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit->-r requirements.txt (line 2))
+#19 6.275   Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+#19 6.383 Collecting narwhals>=2.4.0 (from altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit->-r requirements.txt (line 2))
+#19 6.401   Downloading narwhals-2.26.0-py3-none-any.whl.metadata (15 kB)
+#19 6.471 Collecting python-dateutil>=2.8.2 (from pandas<4,>=1.4.0->streamlit->-r requirements.txt (line 2))
+#19 6.481   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+#19 ...
+
+#18 [policy 4/6] RUN pip install --no-cache-dir -r requirements.txt
+#18 6.710 Collecting cryptography>=3.4.0 (from pyjwt[crypto]>=2.10.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 6.722   Downloading cryptography-50.0.1-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.3 kB)
+#18 6.838 Collecting click>=7.0 (from uvicorn>=0.31.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 6.853   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#18 7.105 Collecting cffi>=2.0.0 (from cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 7.119   Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+#18 7.192 Collecting pycparser (from cffi>=2.0.0->cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#18 7.205   Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+#18 7.232 Downloading mcp-1.30.0-py3-none-any.whl (234 kB)
+#18 7.375 Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+#18 7.450 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+#18 7.498 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+#18 7.524 Downloading httpx_sse-0.4.3-py3-none-any.whl (9.0 kB)
+#18 7.541 Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+#18 7.568 Downloading pydantic-2.13.5-py3-none-any.whl (472 kB)
+#18 7.636 Downloading pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+#18 7.805    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 12.3 MB/s eta 0:00:00
+#18 7.815 Downloading pydantic_settings-2.15.0-py3-none-any.whl (69 kB)
+#18 7.830 Downloading pyjwt-2.13.0-py3-none-any.whl (31 kB)
+#18 7.838 Downloading python_multipart-0.0.32-py3-none-any.whl (30 kB)
+#18 7.853 Downloading sse_starlette-3.4.11-py3-none-any.whl (17 kB)
+#18 7.877 Downloading starlette-1.6.0-py3-none-any.whl (75 kB)
+#18 7.894 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#18 7.905 Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+#18 7.915 Downloading uvicorn-0.52.4-py3-none-any.whl (79 kB)
+#18 7.929 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+#18 7.938 Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+#18 7.956 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#18 7.978 Downloading cryptography-50.0.1-cp311-abi3-manylinux_2_34_x86_64.whl (4.7 MB)
+#18 8.411    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 10.7 MB/s eta 0:00:00
+#18 8.433 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#18 8.450 Downloading idna-3.19-py3-none-any.whl (68 kB)
+#18 8.473 Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+#18 8.486 Downloading python_dotenv-1.2.3-py3-none-any.whl (22 kB)
+#18 8.544 Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+#18 8.595 Downloading rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (366 kB)
+#18 8.661 Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+#18 8.688 Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+#18 8.722 Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+#18 8.955 Installing collected packages: typing-extensions, rpds-py, python-multipart, python-dotenv, pyjwt, pycparser, idna, httpx-sse, h11, click, certifi, attrs, annotated-types, uvicorn, typing-inspection, referencing, pydantic-core, httpcore, cffi, anyio, starlette, pydantic, jsonschema-specifications, httpx, cryptography, sse-starlette, pydantic-settings, jsonschema, mcp
+#18 ...
+
+#20 [travel 4/6] RUN pip install --no-cache-dir -r requirements.txt
+#20 3.307 Collecting mcp<2,>=1.27 (from -r requirements.txt (line 2))
+#20 3.354   Downloading mcp-1.30.0-py3-none-any.whl.metadata (9.3 kB)
+#20 3.417 Collecting anyio>=4.5 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 3.427   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+#20 3.454 Collecting httpx-sse>=0.4 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 3.465   Downloading httpx_sse-0.4.3-py3-none-any.whl.metadata (9.7 kB)
+#20 3.505 Collecting httpx<1.0.0,>=0.27.1 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 3.515   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+#20 3.576 Collecting jsonschema>=4.20.0 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 3.587   Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+#20 3.629 Collecting pydantic-settings>=2.5.2 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 3.642   Downloading pydantic_settings-2.15.0-py3-none-any.whl.metadata (3.9 kB)
+#20 3.870 Collecting pydantic<3.0.0,>=2.11.0 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 3.882   Downloading pydantic-2.13.5-py3-none-any.whl.metadata (110 kB)
+#20 3.920 Collecting pyjwt>=2.10.1 (from pyjwt[crypto]>=2.10.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 3.930   Downloading pyjwt-2.13.0-py3-none-any.whl.metadata (3.4 kB)
+#20 3.951 Collecting python-multipart>=0.0.9 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 3.963   Downloading python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+#20 4.032 Collecting sse-starlette>=1.6.1 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 4.040   Downloading sse_starlette-3.4.11-py3-none-any.whl.metadata (15 kB)
+#20 4.099 Collecting starlette>=0.27 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 4.106   Downloading starlette-1.6.0-py3-none-any.whl.metadata (6.4 kB)
+#20 4.141 Collecting typing-extensions>=4.9.0 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 4.153   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#20 4.169 Collecting typing-inspection>=0.4.1 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 4.181   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+#20 4.233 Collecting uvicorn>=0.31.1 (from mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 4.241   Downloading uvicorn-0.52.4-py3-none-any.whl.metadata (6.6 kB)
+#20 4.272 Collecting idna>=2.8 (from anyio>=4.5->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 4.284   Downloading idna-3.19-py3-none-any.whl.metadata (9.2 kB)
+#20 4.321 Collecting certifi (from httpx<1.0.0,>=0.27.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 4.331   Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+#20 4.364 Collecting httpcore==1.* (from httpx<1.0.0,>=0.27.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 4.373   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+#20 4.394 Collecting h11>=0.16 (from httpcore==1.*->httpx<1.0.0,>=0.27.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 4.404   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#20 4.428 Collecting attrs>=22.2.0 (from jsonschema>=4.20.0->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 4.439   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+#20 4.465 Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.20.0->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 4.473   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+#20 4.518 Collecting referencing>=0.28.4 (from jsonschema>=4.20.0->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 4.527   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+#20 4.953 Collecting rpds-py>=0.25.0 (from jsonschema>=4.20.0->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 4.970   Downloading rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+#20 4.996 Collecting annotated-types>=0.6.0 (from pydantic<3.0.0,>=2.11.0->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 5.014   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+#20 6.237 Collecting pydantic-core==2.46.5 (from pydantic<3.0.0,>=2.11.0->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 6.249   Downloading pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+#20 6.336 Collecting python-dotenv>=0.21.0 (from pydantic-settings>=2.5.2->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 6.347   Downloading python_dotenv-1.2.3-py3-none-any.whl.metadata (29 kB)
+#20 6.772 Collecting cryptography>=3.4.0 (from pyjwt[crypto]>=2.10.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 6.798   Downloading cryptography-50.0.1-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.3 kB)
+#20 6.935 Collecting click>=7.0 (from uvicorn>=0.31.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 6.958   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#20 7.142 Collecting cffi>=2.0.0 (from cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 7.160   Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+#20 7.274 Collecting pycparser (from cffi>=2.0.0->cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp<2,>=1.27->-r requirements.txt (line 2))
+#20 7.335   Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+#20 7.375 Downloading mcp-1.30.0-py3-none-any.whl (234 kB)
+#20 7.498 Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+#20 7.524 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+#20 7.549 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+#20 7.568 Downloading httpx_sse-0.4.3-py3-none-any.whl (9.0 kB)
+#20 7.580 Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+#20 7.625 Downloading pydantic-2.13.5-py3-none-any.whl (472 kB)
+#20 7.672 Downloading pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+#20 7.833    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 12.8 MB/s eta 0:00:00
+#20 7.848 Downloading pydantic_settings-2.15.0-py3-none-any.whl (69 kB)
+#20 7.877 Downloading pyjwt-2.13.0-py3-none-any.whl (31 kB)
+#20 7.893 Downloading python_multipart-0.0.32-py3-none-any.whl (30 kB)
+#20 7.905 Downloading sse_starlette-3.4.11-py3-none-any.whl (17 kB)
+#20 7.918 Downloading starlette-1.6.0-py3-none-any.whl (75 kB)
+#20 7.933 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#20 7.942 Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+#20 7.956 Downloading uvicorn-0.52.4-py3-none-any.whl (79 kB)
+#20 7.972 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+#20 7.990 Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+#20 8.014 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#20 8.042 Downloading cryptography-50.0.1-cp311-abi3-manylinux_2_34_x86_64.whl (4.7 MB)
+#20 8.467    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 11.3 MB/s eta 0:00:00
+#20 8.479 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#20 8.492 Downloading idna-3.19-py3-none-any.whl (68 kB)
+#20 8.519 Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+#20 8.548 Downloading python_dotenv-1.2.3-py3-none-any.whl (22 kB)
+#20 8.564 Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+#20 8.574 Downloading rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (366 kB)
+#20 8.650 Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+#20 8.667 Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+#20 8.696 Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+#20 8.919 Installing collected packages: typing-extensions, rpds-py, python-multipart, python-dotenv, pyjwt, pycparser, idna, httpx-sse, h11, click, certifi, attrs, annotated-types, uvicorn, typing-inspection, referencing, pydantic-core, httpcore, cffi, anyio, starlette, pydantic, jsonschema-specifications, httpx, cryptography, sse-starlette, pydantic-settings, jsonschema, mcp
+#20 ...
+
+#21 [backend 4/6] RUN pip install --no-cache-dir -r requirements.txt
+#21 3.389 Collecting fastapi (from -r requirements.txt (line 1))
+#21 3.448   Downloading fastapi-0.141.1-py3-none-any.whl.metadata (27 kB)
+#21 3.499 Collecting httpx (from -r requirements.txt (line 2))
+#21 3.513   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+#21 3.549 Collecting mcp<2,>=1.27 (from -r requirements.txt (line 3))
+#21 3.559   Downloading mcp-1.30.0-py3-none-any.whl.metadata (9.3 kB)
+#21 3.716 Collecting openai (from -r requirements.txt (line 4))
+#21 3.724   Downloading openai-3.13.0-py3-none-any.whl.metadata (41 kB)
+#21 3.963 Collecting pydantic (from -r requirements.txt (line 5))
+#21 3.974   Downloading pydantic-2.13.5-py3-none-any.whl.metadata (110 kB)
+#21 4.016 Collecting python-dotenv (from -r requirements.txt (line 6))
+#21 4.024   Downloading python_dotenv-1.2.3-py3-none-any.whl.metadata (29 kB)
+#21 4.071 Collecting uvicorn (from -r requirements.txt (line 7))
+#21 4.085   Downloading uvicorn-0.52.4-py3-none-any.whl.metadata (6.6 kB)
+#21 4.125 Collecting starlette>=0.46.0 (from fastapi->-r requirements.txt (line 1))
+#21 4.135   Downloading starlette-1.6.0-py3-none-any.whl.metadata (6.4 kB)
+#21 4.194 Collecting typing-extensions>=4.8.0 (from fastapi->-r requirements.txt (line 1))
+#21 4.206   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#21 4.223 Collecting typing-inspection>=0.4.2 (from fastapi->-r requirements.txt (line 1))
+#21 4.237   Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+#21 4.250 Collecting annotated-doc>=0.0.2 (from fastapi->-r requirements.txt (line 1))
+#21 4.263   Downloading annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+#21 4.305 Collecting anyio (from httpx->-r requirements.txt (line 2))
+#21 4.314   Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+#21 4.343 Collecting certifi (from httpx->-r requirements.txt (line 2))
+#21 4.357   Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+#21 4.383 Collecting httpcore==1.* (from httpx->-r requirements.txt (line 2))
+#21 4.390   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+#21 4.419 Collecting idna (from httpx->-r requirements.txt (line 2))
+#21 4.430   Downloading idna-3.19-py3-none-any.whl.metadata (9.2 kB)
+#21 4.452 Collecting h11>=0.16 (from httpcore==1.*->httpx->-r requirements.txt (line 2))
+#21 4.463   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#21 4.496 Collecting httpx-sse>=0.4 (from mcp<2,>=1.27->-r requirements.txt (line 3))
+#21 4.505   Downloading httpx_sse-0.4.3-py3-none-any.whl.metadata (9.7 kB)
+#21 4.556 Collecting jsonschema>=4.20.0 (from mcp<2,>=1.27->-r requirements.txt (line 3))
+#21 4.587   Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+#21 4.620 Collecting pydantic-settings>=2.5.2 (from mcp<2,>=1.27->-r requirements.txt (line 3))
+#21 4.630   Downloading pydantic_settings-2.15.0-py3-none-any.whl.metadata (3.9 kB)
+#21 4.679 Collecting pyjwt>=2.10.1 (from pyjwt[crypto]>=2.10.1->mcp<2,>=1.27->-r requirements.txt (line 3))
+#21 4.687   Downloading pyjwt-2.13.0-py3-none-any.whl.metadata (3.4 kB)
+#21 4.713 Collecting python-multipart>=0.0.9 (from mcp<2,>=1.27->-r requirements.txt (line 3))
+#21 4.723   Downloading python_multipart-0.0.32-py3-none-any.whl.metadata (2.1 kB)
+#21 4.763 Collecting sse-starlette>=1.6.1 (from mcp<2,>=1.27->-r requirements.txt (line 3))
+#21 4.776   Downloading sse_starlette-3.4.11-py3-none-any.whl.metadata (15 kB)
+#21 4.843 Collecting httpx2<3,>=2.7.0 (from openai->-r requirements.txt (line 4))
+#21 4.855   Downloading httpx2-2.12.0-py3-none-any.whl.metadata (9.5 kB)
+#21 5.005 Collecting jiter<1,>=0.16.0 (from openai->-r requirements.txt (line 4))
+#21 5.016   Downloading jiter-0.16.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.2 kB)
+#21 5.119 Collecting sniffio (from openai->-r requirements.txt (line 4))
+#21 5.129   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+#21 5.151 Collecting annotated-types>=0.6.0 (from pydantic->-r requirements.txt (line 5))
+#21 5.161   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+#21 6.460 Collecting pydantic-core==2.46.5 (from pydantic->-r requirements.txt (line 5))
+#21 6.473   Downloading pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+#21 6.519 Collecting click>=7.0 (from uvicorn->-r requirements.txt (line 7))
+#21 6.531   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#21 6.628 Collecting httpcore2==2.12.0 (from httpx2<3,>=2.7.0->openai->-r requirements.txt (line 4))
+#21 6.648   Downloading httpcore2-2.12.0-py3-none-any.whl.metadata (25 kB)
+#21 6.684 Collecting truststore>=0.10 (from httpx2<3,>=2.7.0->openai->-r requirements.txt (line 4))
+#21 6.692   Downloading truststore-0.10.4-py3-none-any.whl.metadata (4.4 kB)
+#21 6.734 Collecting attrs>=22.2.0 (from jsonschema>=4.20.0->mcp<2,>=1.27->-r requirements.txt (line 3))
+#21 6.747   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+#21 6.772 Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.20.0->mcp<2,>=1.27->-r requirements.txt (line 3))
+#21 6.786   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+#21 6.845 Collecting referencing>=0.28.4 (from jsonschema>=4.20.0->mcp<2,>=1.27->-r requirements.txt (line 3))
+#21 6.869   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+#21 7.314 Collecting rpds-py>=0.25.0 (from jsonschema>=4.20.0->mcp<2,>=1.27->-r requirements.txt (line 3))
+#21 7.352   Downloading rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+#21 7.899 Collecting cryptography>=3.4.0 (from pyjwt[crypto]>=2.10.1->mcp<2,>=1.27->-r requirements.txt (line 3))
+#21 7.907   Downloading cryptography-50.0.1-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.3 kB)
+#21 8.254 Collecting cffi>=2.0.0 (from cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp<2,>=1.27->-r requirements.txt (line 3))
+#21 8.269   Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+#21 8.348 Collecting pycparser (from cffi>=2.0.0->cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp<2,>=1.27->-r requirements.txt (line 3))
+#21 8.364   Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+#21 8.387 Downloading fastapi-0.141.1-py3-none-any.whl (131 kB)
+#21 8.410 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+#21 8.432 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+#21 8.453 Downloading mcp-1.30.0-py3-none-any.whl (234 kB)
+#21 8.488 Downloading openai-3.13.0-py3-none-any.whl (2.0 MB)
+#21 8.846    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 5.7 MB/s eta 0:00:00
+#21 8.862 Downloading pydantic-2.13.5-py3-none-any.whl (472 kB)
+#21 8.902 Downloading pydantic_core-2.46.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+#21 9.058    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 13.7 MB/s eta 0:00:00
+#21 9.071 Downloading python_dotenv-1.2.3-py3-none-any.whl (22 kB)
+#21 9.100 Downloading uvicorn-0.52.4-py3-none-any.whl (79 kB)
+#21 9.120 Downloading annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+#21 9.140 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+#21 9.150 Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+#21 9.202 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#21 9.237 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#21 9.251 Downloading httpx_sse-0.4.3-py3-none-any.whl (9.0 kB)
+#21 9.268 Downloading httpx2-2.12.0-py3-none-any.whl (95 kB)
+#21 9.287 Downloading httpcore2-2.12.0-py3-none-any.whl (83 kB)
+#21 9.308 Downloading idna-3.19-py3-none-any.whl (68 kB)
+#21 9.336 Downloading jiter-0.16.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (343 kB)
+#21 9.402 Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+#21 9.437 Downloading pydantic_settings-2.15.0-py3-none-any.whl (69 kB)
+#21 9.452 Downloading pyjwt-2.13.0-py3-none-any.whl (31 kB)
+#21 9.476 Downloading python_multipart-0.0.32-py3-none-any.whl (30 kB)
+#21 9.493 Downloading sse_starlette-3.4.11-py3-none-any.whl (17 kB)
+#21 9.510 Downloading starlette-1.6.0-py3-none-any.whl (75 kB)
+#21 9.538 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#21 9.556 Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+#21 9.574 Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+#21 9.618 Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+#21 9.630 Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+#21 9.652 Downloading cryptography-50.0.1-cp311-abi3-manylinux_2_34_x86_64.whl (4.7 MB)
+#21 10.16    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 9.6 MB/s eta 0:00:00
+#21 10.17 Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+#21 10.18 Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+#21 10.21 Downloading rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (366 kB)
+#21 10.27 Downloading truststore-0.10.4-py3-none-any.whl (18 kB)
+#21 10.28 Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+#21 10.32 Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+#21 10.69 Installing collected packages: typing-extensions, truststore, sniffio, rpds-py, python-multipart, python-dotenv, pyjwt, pycparser, jiter, idna, httpx-sse, h11, click, certifi, attrs, annotated-types, annotated-doc, uvicorn, typing-inspection, referencing, pydantic-core, httpcore2, httpcore, cffi, anyio, starlette, pydantic, jsonschema-specifications, httpx2, httpx, cryptography, sse-starlette, pydantic-settings, openai, jsonschema, fastapi, mcp
+#21 ...
+
+#18 [policy 4/6] RUN pip install --no-cache-dir -r requirements.txt
+#18 13.92 Successfully installed annotated-types-0.8.0 anyio-4.15.1 attrs-26.1.0 certifi-2026.7.22 cffi-2.1.1 click-8.5.0 cryptography-50.0.1 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 httpx-sse-0.4.3 idna-3.19 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 mcp-1.30.0 pycparser-3.0 pydantic-2.13.5 pydantic-core-2.46.5 pydantic-settings-2.15.0 pyjwt-2.13.0 python-dotenv-1.2.3 python-multipart-0.0.32 referencing-0.37.0 rpds-py-2026.6.3 sse-starlette-3.4.11 starlette-1.6.0 typing-extensions-4.16.0 typing-inspection-0.4.4 uvicorn-0.52.4
+#18 13.92 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#18 14.15 
+#18 14.15 [notice] A new release of pip is available: 25.0.1 -> 26.2.1
+#18 14.15 [notice] To update, run: pip install --upgrade pip
+#18 ...
+
+#20 [travel 4/6] RUN pip install --no-cache-dir -r requirements.txt
+#20 13.92 Successfully installed annotated-types-0.8.0 anyio-4.15.1 attrs-26.1.0 certifi-2026.7.22 cffi-2.1.1 click-8.5.0 cryptography-50.0.1 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 httpx-sse-0.4.3 idna-3.19 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 mcp-1.30.0 pycparser-3.0 pydantic-2.13.5 pydantic-core-2.46.5 pydantic-settings-2.15.0 pyjwt-2.13.0 python-dotenv-1.2.3 python-multipart-0.0.32 referencing-0.37.0 rpds-py-2026.6.3 sse-starlette-3.4.11 starlette-1.6.0 typing-extensions-4.16.0 typing-inspection-0.4.4 uvicorn-0.52.4
+#20 13.92 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#20 14.15 
+#20 14.15 [notice] A new release of pip is available: 25.0.1 -> 26.2.1
+#20 14.15 [notice] To update, run: pip install --upgrade pip
+#20 DONE 14.8s
+
+#18 [policy 4/6] RUN pip install --no-cache-dir -r requirements.txt
+#18 DONE 14.8s
+
+#22 [policy 5/6] COPY mcp_server/policy_stdio_server.py ./policy_stdio_server.py
+#22 ...
+
+#23 [travel 5/6] COPY mcp_server/travel_server.py ./travel_server.py
+#23 DONE 0.2s
+
+#22 [policy 5/6] COPY mcp_server/policy_stdio_server.py ./policy_stdio_server.py
+#22 DONE 0.2s
+
+#24 [travel 6/6] COPY mcp_server/healthcheck.py ./healthcheck.py
+#24 DONE 0.1s
+
+#25 [policy 6/6] COPY mcp_server/healthcheck.py ./healthcheck.py
+#25 DONE 0.1s
+
+#19 [frontend 4/5] RUN pip install --no-cache-dir -r requirements.txt
+#19 6.803 Collecting charset_normalizer<4,>=2 (from requests<3,>=2.27->streamlit->-r requirements.txt (line 2))
+#19 6.816   Downloading charset_normalizer-3.5.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (45 kB)
+#19 6.908 Collecting urllib3<3,>=1.26 (from requests<3,>=2.27->streamlit->-r requirements.txt (line 2))
+#19 6.933   Downloading urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+#19 7.056 Collecting MarkupSafe>=2.0 (from jinja2->altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit->-r requirements.txt (line 2))
+#19 7.071   Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+#19 7.106 Collecting attrs>=22.2.0 (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit->-r requirements.txt (line 2))
+#19 7.119   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+#19 7.138 Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit->-r requirements.txt (line 2))
+#19 7.150   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+#19 7.218 Collecting referencing>=0.28.4 (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit->-r requirements.txt (line 2))
+#19 7.267   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+#19 7.977 Collecting rpds-py>=0.25.0 (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=5.0.0->streamlit->-r requirements.txt (line 2))
+#19 8.001   Downloading rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+#19 8.062 Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas<4,>=1.4.0->streamlit->-r requirements.txt (line 2))
+#19 8.093   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+#19 8.186 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+#19 8.215 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+#19 8.243 Downloading streamlit-1.63.0-py3-none-any.whl (10.5 MB)
+#19 9.098    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.5/10.5 MB 12.5 MB/s eta 0:00:00
+#19 9.109 Downloading altair-6.2.2-py3-none-any.whl (797 kB)
+#19 9.171    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 797.6/797.6 kB 13.7 MB/s eta 0:00:00
+#19 9.189 Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+#19 9.221 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#19 9.236 Downloading httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (523 kB)
+#19 9.316 Downloading idna-3.19-py3-none-any.whl (68 kB)
+#19 9.361 Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+#19 9.381 Downloading numpy-2.5.3-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+#19 10.68    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 12.9 MB/s eta 0:00:00
+#19 10.70 Downloading packaging-26.3-py3-none-any.whl (129 kB)
+#19 10.71 Downloading pandas-3.0.5-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (11.0 MB)
+#19 11.39    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.0/11.0 MB 16.1 MB/s eta 0:00:00
+#19 11.40 Downloading pillow-12.3.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (6.9 MB)
+#19 11.83    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.9/6.9 MB 16.2 MB/s eta 0:00:00
+#19 11.84 Downloading protobuf-7.36.1-cp310-abi3-manylinux2014_x86_64.whl (343 kB)
+#19 11.87 Downloading pyarrow-25.0.1-cp312-cp312-manylinux_2_28_x86_64.whl (50.1 MB)
+#19 14.84    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.1/50.1 MB 16.8 MB/s eta 0:00:00
+#19 14.85 Downloading pydeck-0.9.3-py2.py3-none-any.whl (11.4 MB)
+#19 ...
+
+#26 [policy] exporting to image
+#26 exporting layers
+#26 exporting layers 2.7s done
+#26 exporting manifest sha256:db1cae640cf05d8d8c6f24f1b01e7a850807839e582f74dd4d5165909a32864b 0.0s done
+#26 exporting config sha256:330cc71f1f53aa6834c5a085f1108496dd61137997fff8f4a4a357d059df4e2a 0.0s done
+#26 exporting attestation manifest sha256:e274f44edfe3fdd28f70ff89ae47260c4106af643363f0c03c1303d3b8353ef1
+#26 exporting attestation manifest sha256:e274f44edfe3fdd28f70ff89ae47260c4106af643363f0c03c1303d3b8353ef1 0.0s done
+#26 exporting manifest list sha256:6b9b90dcb37e745c11ba6d8f96ef478f996065fe896d7d8d1d0a22acfc7c3bd7 0.0s done
+#26 naming to docker.io/jso4603/mini-agent-mcp-policy:1.0.0 done
+#26 unpacking to docker.io/jso4603/mini-agent-mcp-policy:1.0.0
+#26 unpacking to docker.io/jso4603/mini-agent-mcp-policy:1.0.0 0.8s done
+#26 DONE 3.7s
+
+#27 [travel] exporting to image
+#27 exporting layers 2.7s done
+#27 exporting manifest sha256:e3bc1a2caea08dc383d8c0d17e8960328cd98a2915833839b244c5871f020d83 0.0s done
+#27 exporting config sha256:612f28bbec0ffe719940b9670bc0bb233c185ac284f173ee0dd03835e3890711 0.0s done
+#27 exporting attestation manifest sha256:914a67b7e4cff621526e43107013de438ddea1a3471769734868e248de0d15e5 0.1s done
+#27 exporting manifest list sha256:39d23432ce70c95808d487d14e4a9f4295cd52ed445d256fab42a12e857361c5 0.0s done
+#27 naming to docker.io/jso4603/mini-agent-mcp-travel:1.0.0 0.0s done
+#27 unpacking to docker.io/jso4603/mini-agent-mcp-travel:1.0.0 0.8s done
+#27 DONE 3.7s
+
+#21 [backend 4/6] RUN pip install --no-cache-dir -r requirements.txt
+#21 18.75 Successfully installed annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.15.1 attrs-26.1.0 certifi-2026.7.22 cffi-2.1.1 click-8.5.0 cryptography-50.0.1 fastapi-0.141.1 h11-0.16.0 httpcore-1.0.9 httpcore2-2.12.0 httpx-0.28.1 httpx-sse-0.4.3 httpx2-2.12.0 idna-3.19 jiter-0.16.0 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 mcp-1.30.0 openai-3.13.0 pycparser-3.0 pydantic-2.13.5 pydantic-core-2.46.5 pydantic-settings-2.15.0 pyjwt-2.13.0 python-dotenv-1.2.3 python-multipart-0.0.32 referencing-0.37.0 rpds-py-2026.6.3 sniffio-1.3.1 sse-starlette-3.4.11 starlette-1.6.0 truststore-0.10.4 typing-extensions-4.16.0 typing-inspection-0.4.4 uvicorn-0.52.4
+#21 18.75 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#21 18.92 
+#21 18.92 [notice] A new release of pip is available: 25.0.1 -> 26.2.1
+#21 18.92 [notice] To update, run: pip install --upgrade pip
+#21 ...
+
+#28 [policy] resolving provenance for metadata file
+#28 DONE 0.0s
+
+#29 [travel] resolving provenance for metadata file
+#29 DONE 0.0s
+
+#19 [frontend 4/5] RUN pip install --no-cache-dir -r requirements.txt
+#19 15.54    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.4/11.4 MB 16.6 MB/s eta 0:00:00
+#19 15.55 Downloading python_multipart-0.0.32-py3-none-any.whl (30 kB)
+#19 15.57 Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+#19 15.58 Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+#19 15.60 Downloading starlette-1.6.0-py3-none-any.whl (75 kB)
+#19 15.62 Downloading toml-0.10.2-py2.py3-none-any.whl (16 kB)
+#19 15.64 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#19 15.65 Downloading uvicorn-0.52.4-py3-none-any.whl (79 kB)
+#19 15.67 Downloading watchdog-6.0.0-py3-none-manylinux2014_x86_64.whl (79 kB)
+#19 15.69 Downloading websockets-16.1.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (187 kB)
+#19 15.71 Downloading charset_normalizer-3.5.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (248 kB)
+#19 15.74 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#19 15.75 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+#19 15.77 Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+#19 15.78 Downloading narwhals-2.26.0-py3-none-any.whl (474 kB)
+#19 15.83 Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+#19 15.86 Downloading urllib3-2.7.0-py3-none-any.whl (131 kB)
+#19 15.88 Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+#19 15.90 Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+#19 15.91 Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+#19 15.92 Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+#19 15.93 Downloading rpds_py-2026.6.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (366 kB)
+#19 15.96 Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+#19 16.36 Installing collected packages: websockets, watchdog, urllib3, typing-extensions, toml, six, rpds-py, python-multipart, pyarrow, protobuf, pillow, packaging, numpy, narwhals, MarkupSafe, itsdangerous, idna, httptools, h11, click, charset_normalizer, certifi, attrs, uvicorn, requests, referencing, python-dateutil, jinja2, httpcore, anyio, starlette, pydeck, pandas, jsonschema-specifications, httpx, jsonschema, altair, streamlit
+#19 ...
+
+#21 [backend 4/6] RUN pip install --no-cache-dir -r requirements.txt
+#21 DONE 19.7s
+
+#30 [backend 5/6] COPY backend/ ./backend/
+#30 DONE 0.1s
+
+#19 [frontend 4/5] RUN pip install --no-cache-dir -r requirements.txt
+#19 ...
+
+#31 [backend 6/6] COPY mcp_server/policy_stdio_server.py ./mcp_server/policy_stdio_server.py
+#31 DONE 0.1s
+
+#32 [backend] exporting to image
+#32 exporting layers 2.9s done
+#32 exporting manifest sha256:a3e32f6e83dedf571ec422706a009144e70b907ed43ee135293f9a3f12802830 0.0s done
+#32 exporting config sha256:1813e800bc72710fbcaf77b0d64b3519c8eef932d44391d9adc25f7465400a67 0.0s done
+#32 exporting attestation manifest sha256:8227ccd1738a081deb7146a73005f6545e2cb910d172b81b863855435d95f8b4 0.0s done
+#32 exporting manifest list sha256:d58ba976bfb0eda48e922f6c7bc2f11c23930c8738c2d7d74714a21f05552e0c 0.0s done
+#32 naming to docker.io/jso4603/mini-agent-mcp-backend:1.0.0
+#32 naming to docker.io/jso4603/mini-agent-mcp-backend:1.0.0 done
+#32 unpacking to docker.io/jso4603/mini-agent-mcp-backend:1.0.0
+#32 unpacking to docker.io/jso4603/mini-agent-mcp-backend:1.0.0 1.7s done
+#32 DONE 4.7s
+
+#19 [frontend 4/5] RUN pip install --no-cache-dir -r requirements.txt
+#19 ...
+
+#33 [backend] resolving provenance for metadata file
+#33 DONE 0.0s
+
+#19 [frontend 4/5] RUN pip install --no-cache-dir -r requirements.txt
+#19 33.51 Successfully installed MarkupSafe-3.0.3 altair-6.2.2 anyio-4.15.1 attrs-26.1.0 certifi-2026.7.22 charset_normalizer-3.5.1 click-8.5.0 h11-0.16.0 httpcore-1.0.9 httptools-0.8.0 httpx-0.28.1 idna-3.19 itsdangerous-2.2.0 jinja2-3.1.6 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 narwhals-2.26.0 numpy-2.5.3 packaging-26.3 pandas-3.0.5 pillow-12.3.0 protobuf-7.36.1 pyarrow-25.0.1 pydeck-0.9.3 python-dateutil-2.9.0.post0 python-multipart-0.0.32 referencing-0.37.0 requests-2.34.2 rpds-py-2026.6.3 six-1.17.0 starlette-1.6.0 streamlit-1.63.0 toml-0.10.2 typing-extensions-4.16.0 urllib3-2.7.0 uvicorn-0.52.4 watchdog-6.0.0 websockets-16.1.1
+#19 33.51 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#19 33.68 
+#19 33.68 [notice] A new release of pip is available: 25.0.1 -> 26.2.1
+#19 33.68 [notice] To update, run: pip install --upgrade pip
+#19 DONE 34.6s
+
+#34 [frontend 5/5] COPY frontend/app.py ./app.py
+#34 DONE 0.2s
+
+#35 [frontend] exporting to image
+#35 exporting layers
+#35 exporting layers 21.3s done
+#35 exporting manifest sha256:e0df4628070f2b827e4ecc75dbcee9f2dfa5a9c10eba69002858aee53e36304d 0.0s done
+#35 exporting config sha256:d72fc37f33306a8d8ef79e7b946ede90adfda2ec3b53f65ed0331b16743cd214 0.0s done
+#35 exporting attestation manifest sha256:154de5a0c5fdcff6f9a902cb336eb6474b1b60d6f1509e158e419ea5302026aa 0.0s done
+#35 exporting manifest list sha256:4685f4cbb91d14293cf58526dec002fc3238d600eb2dcb07c69034fabdcc3787 0.0s done
+#35 naming to docker.io/jso4603/mini-agent-mcp-frontend:1.0.0 done
+#35 unpacking to docker.io/jso4603/mini-agent-mcp-frontend:1.0.0
+#35 unpacking to docker.io/jso4603/mini-agent-mcp-frontend:1.0.0 4.3s done
+#35 DONE 25.8s
+
+#36 [frontend] resolving provenance for metadata file
+#36 DONE 0.0s
+ Image jso4603/mini-agent-mcp-backend:1.0.0 Built 
+ Image jso4603/mini-agent-mcp-frontend:1.0.0 Built 
+ Image jso4603/mini-agent-mcp-policy:1.0.0 Built 
+ Image jso4603/mini-agent-mcp-travel:1.0.0 Built 
