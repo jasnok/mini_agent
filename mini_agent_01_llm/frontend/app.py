@@ -2,6 +2,7 @@ import streamlit as st
 
 
 
+
 st.set_page_config(page_title="Mini Agent 01", page_icon="🤖", layout="wide")
 
 home_page = st.Page("app_pages/01_home.py", title="HOME", default=True)
