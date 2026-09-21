@@ -1,0 +1,64 @@
+name: mini-agent-03-mcp
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      TRAVEL_MCP_URL: http://travel-mcp:8010/mcp
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
+      REDIS_URL: redis://aidevs-redis:6379/0
+      DATABASE_URL: postgresql://${POSTGRES_USER:-agent_user}:${POSTGRES_PASSWORD:-agent_pwd}@aidevs-pgvector:5432/${POSTGRES_DB:-agent_db}
+      PGVECTOR_COLLECTION: ${PGVECTOR_COLLECTION:-travel_documents}
+    ports:
+      - "8000:8000"
+    depends_on:
+      travel-mcp:
+        condition: service_healthy
+    networks:
+      - default
+      - existing-infrastructure
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+    restart: unless-stopped
+
+  travel-mcp:
+    build:
+      context: .
+      dockerfile: mcp_server/Dockerfile
+    environment:
+      MCP_HOST: 0.0.0.0
+      MCP_PORT: 8010
+    ports:
+      - "8010:8010"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; socket.create_connection(('127.0.0.1', 8010), 2).close()"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    environment:
+      BACKEND_API_URL: http://backend:8000
+    ports:
+      - "8501:8501"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+networks:
+  existing-infrastructure:
+    external: true
+    name: mini-agent-03-mcp-infra

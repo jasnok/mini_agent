@@ -1,0 +1,36 @@
+name: Mini Agent 03 MCP CI
+
+on:
+  push:
+    paths:
+      - "**"
+      - ".github/workflows/mcp-ci.yml"
+  pull_request:
+    paths:
+      - "**"
+      - ".github/workflows/mcp-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Compile backend and MCP sources
+        run: python -m compileall -q backend mcp_server
+      - name: Validate Compose
+        run: docker compose config --quiet
+      - name: Build images
+        run: docker compose build
