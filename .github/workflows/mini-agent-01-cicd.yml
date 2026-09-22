@@ -52,7 +52,7 @@ jobs:
           python -m pip install -r backend/requirements.txt
 
       - name: Run backend tests
-        run: python -m pytest backend/tests -q
+        run: python -m pytest backend/test_app.py backend/tests -q
 
       - name: Prepare CI environment file
         run: cp .env.example .env

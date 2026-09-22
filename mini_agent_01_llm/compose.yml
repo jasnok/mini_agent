@@ -7,7 +7,9 @@ services:
       dockerfile: backend/Dockerfile
     image: mini-agent-01-backend:local
     env_file:
-      - .env
+      - ${ENV_FILE:-.env}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "${BACKEND_PORT:-8000}:8000"
     healthcheck:
@@ -24,7 +26,7 @@ services:
       dockerfile: Dockerfile
     image: mini-agent-01-frontend:local
     env_file:
-      - .env
+      - ${ENV_FILE:-.env}
     environment:
       BACKEND_API_URL: http://backend:8000
     ports:
